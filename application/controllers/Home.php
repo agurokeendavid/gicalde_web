@@ -5,28 +5,30 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$data['page_data'] = array(
-			'title' => 'Home'
+			'module' => 'Home',
+			'section' => 'Main'
 		);
-		$this->load->view('layouts/home_header', $data);
-		$this->load->view('pages/home/index', $data);
-		$this->load->view('layouts/home_footer', $data);
+		$this->load->view('layouts/home_head', $data);
+		$this->load->view('modules/home/index', $data);
+		$this->load->view('layouts/home_foot', $data);
 	}
 
 	public function about() {
 		$data['page_data'] = array(
 			'title' => 'About Us'
 		);
-		$this->load->view('layouts/home_header', $data);
-		$this->load->view('pages/home/about', $data);
-		$this->load->view('layouts/home_footer', $data);
+		$this->load->view('layouts/home_head', $data);
+		$this->load->view('modules/home/about', $data);
+		$this->load->view('layouts/home_foot', $data);
 	}
 
 	public function book() {
 		$data['page_data'] = array(
-			'title' => 'Book Now'
+			'module' => 'Home',
+			'section' => 'Book Reservation'
 		);
-		$this->load->view('layouts/home_header', $data);
-		$this->load->view('pages/home/book', $data);
-		$this->load->view('layouts/home_footer', $data);
+		$this->load->view('layouts/home_head', $data);
+		$this->load->view('modules/home/book', $data);
+		$this->load->view('layouts/home_foot', $data);
 	}
 }

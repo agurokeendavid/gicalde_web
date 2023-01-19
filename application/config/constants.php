@@ -85,3 +85,18 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 const SYSTEM_TITLE = 'Gicalde Farm Resort';
+const DEFAULT_ADMIN_ID = 1;
+const RESULT_FAILED = 0;
+const RESULT_SUCCESS = 1;
+const ROLE_ADMINISTRATOR = 1;
+const ROLE_STAFF = 2;
+const BOOL_NO = 0;
+const BOOL_YES = 1;
+
+date_default_timezone_set('Asia/Singapore');
+define('DATE_DISPLAY_FORMAT', 'F d, Y');
+define('DATE_TIME_DISPLAY_FORMAT', 'F d, Y h:m a');
+define('DATE_NOW', date('Y-m-d'));
+define('YEAR_NOW', date('Y'));
+define('MONTH_NOW', date('F'));
+define('NOW', date('Y-m-d H:i:s'));
