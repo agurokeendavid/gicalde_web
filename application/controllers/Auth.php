@@ -27,6 +27,13 @@ class Auth extends CI_Controller
 		);
 	}
 
+	public function logout()
+	{
+		$this->session->set_userdata('RESULT_STATUS', RESULT_SUCCESS);
+		$this->session->set_userdata('RESULT_MESSAGE', 'Account has been successfully logged out.');
+		redirect('auth/login');
+	}
+
 
 	public function login()
 	{

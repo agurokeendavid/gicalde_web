@@ -42,3 +42,12 @@ function changeType(x, type) {
 		return tmp;
 	}
 }
+
+
+if (RESULT_STATUS) {
+	Swal.fire({
+		title: 'Success!',
+		text: RESULT_MESSAGE,
+		icon: 'success'
+	});
+}
