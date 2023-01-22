@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="<?= site_url('assets/plugins/mdi/css/materialdesignicons.min.css')?>">
 <!-- End plugin css for this page -->
 <link rel="icon" type="image/png" href="<?= site_url('assets/images/gicalde_logo.png') ?>">
+<link rel="stylesheet" href="<?= site_url('assets/custom/dashboard_overall.css')?>">
 <link rel="stylesheet" href="<?= site_url('assets/custom/overall.css')?>">
 
 <?php if (isset($page_data['styles_path']) && !empty($page_data['styles_path'])) : ?>

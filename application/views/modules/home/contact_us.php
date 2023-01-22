@@ -90,7 +90,7 @@
 
 			<div class="col-md-6 d-flex">
 				<iframe
-					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2720.183837204855!2d119.80268025111481!3d15.92304627096476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3393f2db06f1f6d9%3A0xb25a4d26e6b4fb84!2sVilla%20Balinmanok%20(bmk)%20Private%20Beach%20Resorts!5e1!3m2!1sen!2sph!4v1654955949756!5m2!1sen!2sph"
+					src="https://maps.google.com/maps?q=gicalde&t=k&z=13&ie=UTF8&iwloc=&output=embed"
 					width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
 					referrerpolicy="no-referrer-when-downgrade"></iframe>
 			</div>

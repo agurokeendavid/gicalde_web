@@ -63,6 +63,33 @@ class Home extends CI_Controller
 
 	public function book()
 	{
+		if ($post_data = $this->input->post()) {
+
+		}
+		if (!empty($_GET['room_id'])) {
+			$room = $this->M_rooms->get($_GET['room_id']);
+			if (!$room)
+			{
+				show_404();
+				exit();
+			}
+			$data['reservation_type'] = 'room';
+			$data['info'] = $room;
+		} else if (!empty($_GET['cottage_id']))
+		{
+			$cottage = $this->M_cottages->get($_GET['cottage_id']);
+			if (!$cottage)
+			{
+				show_404();
+				exit();
+			}
+			$data['reservation_type'] = 'cottage';
+			$data['info'] = $cottage;
+		} else
+		{
+			show_404();
+			exit();
+		}
 		$data['page_data'] = array(
 			'module' => 'Home',
 			'section' => 'Book Reservation'

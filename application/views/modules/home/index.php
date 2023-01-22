@@ -104,7 +104,7 @@
 										<li><span class="flaticon-shower"></span>Individual CR</li>
 										<li><span class="flaticon-sun-umbrella"></span>Kitchen &amp; Living Room</li>
 									</ul>
-									<a href="<?= site_url('home/book') ?>" class="btn btn-primary"> <span>&nbsp;&nbsp; Book now &nbsp;&nbsp;</span></a>
+									<a href="<?= site_url('home/book?room_id=' . $value['id']) ?>" class="btn btn-primary"> <span>&nbsp;&nbsp; Book now &nbsp;&nbsp;</span></a>
 									&nbsp;&nbsp;
 									<a href="<?= site_url('home/gallery') ?>" class="btn btn-primary"> <span>&nbsp; More Photos
 										&nbsp;</span></a>
@@ -141,7 +141,7 @@
 									<ul>
 										<li><span class="ion-ios-people"></span><?= $value['no_of_guests']; ?> Guests</li>
 									</ul>
-									<a href="<?= site_url('home/book') ?>" class="btn btn-primary"> <span>&nbsp;&nbsp; Book now &nbsp;&nbsp;</span></a>
+									<a href="<?= site_url('home/book?cottage_id=' . $value['id']) ?>" class="btn btn-primary"> <span>&nbsp;&nbsp; Book now &nbsp;&nbsp;</span></a>
 									&nbsp;&nbsp;
 									<a href="<?= site_url('home/gallery') ?>" class="btn btn-primary"> <span>&nbsp; More Photos
 										&nbsp;</span></a>

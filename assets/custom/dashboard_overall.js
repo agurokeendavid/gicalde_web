@@ -12,9 +12,11 @@ $(function() {
 
 	setPaymentDetailsFormEl.on('submit', function(e) {
 		e.preventDefault();
+
 		if (!$(this).valid()) return;
+
 		$.ajax({
-			url: `${base_url}payment_details/update`,
+			url: `${BASE_URL}payment_details/update`,
 			type: 'POST',
 			async: true,
 			data: $(this).serialize(),
@@ -23,13 +25,13 @@ $(function() {
 				AmagiLoader.show();
 			},
 			success: function (response) {
-				if (response.status == RESULT_SUCCESS) {
+				if (response.status) {
 					Swal.fire({
 						title: 'Success!',
 						text: response.message,
 						icon: 'success'
 					}).then(function () {
-						window.location.reload();
+						location.reload();
 					});
 					return;
 				}
@@ -117,7 +119,7 @@ $(function() {
 		e.preventDefault();
 		if (!changePasswordFormEl.valid()) return;
 		$.ajax({
-			url: `${base_url}users/change_password`,
+			url: `${BASE_URL}users/change_password`,
 			type: 'POST',
 			async: true,
 			data: $(this).serialize(),
