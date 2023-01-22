@@ -14,4 +14,5 @@
 <link rel="stylesheet" href="<?= site_url('assets/temps/home/css/flaticon.css'); ?>">
 <link rel="stylesheet" href="<?= site_url('assets/temps/home/css/icomoon.css'); ?>">
 <link rel="stylesheet" href="<?= site_url('assets/temps/home/css/style.css'); ?>">
-<link rel="stylesheet" href="<?= site_url('assets/custom/pages/home_overall.css'); ?>">
+<link rel="stylesheet" href="<?= site_url('assets/custom/home_overall.css'); ?>">
+<link rel="stylesheet" href="<?= site_url('assets/custom/overall.css')?>">

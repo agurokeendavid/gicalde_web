@@ -5,14 +5,14 @@
 		<div class="row d-flex">
 			<div class="col-md-6 order-md-last heading-section pl-md-5 ftco-animate">
 				<h2 class="mb-4">The resort where you can do nothing.</h2>
-				<p>The Gicalde Farm is a to relieve the stress that has been
+				<p>The Gicalde Farm is a relief the stress that has been
 					around for a while because the resort offers various services. Come and experience firsthand the
 					ways to alleviate your stress and have you relax.
 				</p>
 				<p>We are committed to provide excellent and quality service.We are driven by values, right
 					character and positive attitude that are determined to make your experience worthwhile and
 					memorable . . . </p> <br> <br>
-				<p><a href="#" class="btn btn-primary py-3 px-4">READ &nbsp;MORE</a></p>
+				<p><a href="<?= site_url('home/about')?>" class="btn btn-primary py-3 px-4">READ &nbsp;MORE</a></p>
 			</div>
 			<div class="col-md-6">
 				<div class="row">
@@ -24,7 +24,7 @@
 								<p>The resort is primarily intended for the guests to unwind and enjoy. Our Resort's
 									accommodation Welcomes people from children to adults. . .
 								</p> <br>
-								<p><a href="#"> Read More.</a></p>
+								<p><a href="<?= site_url('home/about')?>"> Read More.</a></p>
 							</div>
 						</div>
 					</div>
@@ -36,7 +36,7 @@
 								<p>The resort is a place of relaxation for guests. It is family-friendly and the
 									place is quiet and peaceful, the perfect quality time to spend with your friends
 									and families. . .</p>
-								<p><a href="#"> Read More.</a></p>
+								<p><a href="<?= site_url('home/about')?>"> Read More.</a></p>
 							</div>
 						</div>
 					</div>
@@ -48,7 +48,7 @@
 								<p>The Gicalde Farm provides a place for the guests to be rested. The resort
 									will offer more activities like Kayak, Camping, and more, to make your stay
 									memorable. . .</p>
-								<p><a href="#"> Read More.</a></p>
+								<p><a href="<?= site_url('home/about')?>"> Read More.</a></p>
 							</div>
 						</div>
 					</div>
@@ -60,7 +60,7 @@
 								<p>The resort management makes sure that our guest arrives safely and on time. We
 									provide relaxation and peace inside the resort by keeping things in order. . .
 								</p>
-								<p><a href="#"> Read More.</a></p>
+								<p><a href="<?= site_url('home/about')?>"> Read More.</a></p>
 							</div>
 						</div>
 					</div>
@@ -82,30 +82,38 @@
 		</div>
 
 		<div class="row">
-			<div class="col-md-4 ftco-animate">
-				<div class="project-wrap">
-					<a href="" class="img" style="background-image: url(<?= site_url('assets/images/22.jpg') ?>);"></a>
-					<div class="text p-4">
-						<span class="price">PHP4,000.00</span>
-						<span class="days">24 Hours Stay in.</span>
-						<h3><a href="">BUNGALOW HOUSE</a></h3>
-						<center>
-							<ul>
-								<li><span class="ion-ios-people"></span>8 Guests</li>
-								<li><span class="flaticon-king-size"></span>2 Bedroom</li>
-							</ul>
-							<ul>
-								<li><span class="flaticon-shower"></span>Individual CR</li>
-								<li><span class="flaticon-sun-umbrella"></span>Kitchen, Living Room and Bathroom</li>
-							</ul>
-							<a href="<?= site_url('home/book') ?>" class="btn btn-primary"> <span>&nbsp;&nbsp; Book now &nbsp;&nbsp;</span></a>
-							&nbsp;&nbsp;
-							<a href="photos.html" class="btn btn-primary"> <span>&nbsp; More Photos
+			<?php if (!empty($rooms)) : ?>
+				<?php foreach ($rooms as $key => $value) : ?>
+					<div class="col-md-4 ftco-animate">
+						<div class="project-wrap">
+							<a href="" class="img"
+							   style="background-image: url(<?= site_url('assets/uploads/rooms/' . $value['photo_file_name']) ?>);"></a>
+							<div class="text p-4">
+								<span class="price"><?= money_php($value['price']) ?></span>
+								<span class="days"><?= $value['description']; ?></span>
+								<h3><a href=""><?= strtoupper($value['name']); ?></a></h3>
+								<center>
+									<ul>
+										<li><span class="ion-ios-people"></span><?= $value['no_of_guests']; ?> Guests
+										</li>
+										<li><span class="flaticon-king-size"></span><?= $value['no_of_rooms']; ?>
+											Bedrooms
+										</li>
+									</ul>
+									<ul>
+										<li><span class="flaticon-shower"></span>Individual CR</li>
+										<li><span class="flaticon-sun-umbrella"></span>Kitchen &amp; Living Room</li>
+									</ul>
+									<a href="<?= site_url('home/book') ?>" class="btn btn-primary"> <span>&nbsp;&nbsp; Book now &nbsp;&nbsp;</span></a>
+									&nbsp;&nbsp;
+									<a href="<?= site_url('home/gallery') ?>" class="btn btn-primary"> <span>&nbsp; More Photos
 										&nbsp;</span></a>
-						</center>
+								</center>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
+				<?php endforeach; ?>
+			<?php endif; ?>
 
 		</div>
 	</div>
@@ -119,145 +127,36 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-4 ftco-animate">
-				<div class="project-wrap">
-					<a href="#" class="img" style="background-image: url(<?= site_url('assets/images/25.jpg') ?>);"></a>
-					<div class="text p-4">
-						<span class="price">PHP700.00</span>
-						<span class="days">8:00AM - 5:00PM</span>
-						<h3><a href="">CABANA</a></h3>
-						<center>
-							<ul>
-								<li><span class="ion-ios-people"></span>10 Guests</li>
-							</ul>
-							<a href="<?= site_url('home/book') ?>" class="btn btn-primary"> <span>&nbsp;&nbsp; Book now &nbsp;&nbsp;</span></a>
-							&nbsp;&nbsp;
-							<a href="#" class="btn btn-primary"> <span>&nbsp; More Photos
+			<?php if (!empty($cottages)) : ?>
+				<?php foreach ($cottages as $key => $value) : ?>
+					<div class="col-md-4 ftco-animate">
+						<div class="project-wrap">
+							<a href="#" class="img"
+							   style="background-image: url(<?= site_url('assets/uploads/cottages/' . $value['photo_file_name']) ?>);"></a>
+							<div class="text p-4">
+								<span class="price"><?= money_php($value['price'])?></span>
+								<span class="days"><?= $value['description']; ?></span>
+								<h3><a href=""><?= strtoupper($value['name']); ?></a></h3>
+								<center>
+									<ul>
+										<li><span class="ion-ios-people"></span><?= $value['no_of_guests']; ?> Guests</li>
+									</ul>
+									<a href="<?= site_url('home/book') ?>" class="btn btn-primary"> <span>&nbsp;&nbsp; Book now &nbsp;&nbsp;</span></a>
+									&nbsp;&nbsp;
+									<a href="<?= site_url('home/gallery') ?>" class="btn btn-primary"> <span>&nbsp; More Photos
 										&nbsp;</span></a>
-						</center>
+								</center>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-
-			<div class="col-md-4 ftco-animate">
-				<div class="project-wrap">
-					<a href="#" class="img" style="background-image: url(<?= site_url('assets/images/23.jpg') ?>);"></a>
-					<div class="text p-4">
-						<span class="price">PHP300.00</span>
-						<span class="days">8:00AM - 5:00PM</span>
-						<h3><a href="">COTTAGE</a></h3>
-						<center>
-							<ul>
-								<li><span class="ion-ios-people"></span>10 Guests</li>
-							</ul>
-							<a href="<?= site_url('home/book') ?>" class="btn btn-primary"> <span>&nbsp;&nbsp; Book now &nbsp;&nbsp;</span></a>
-							&nbsp;&nbsp;
-							<a href="#" class="btn btn-primary"> <span>&nbsp; More Photos
-										&nbsp;</span></a>
-						</center>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="col-md-4 ftco-animate">
-				<div class="project-wrap">
-					<a href="#" class="img" style="background-image: url(<?= site_url('assets/images/24.jpg') ?>);"></a>
-					<div class="text p-4">
-						<span class="price">PHP4000.00</span>
-						<span class="days">8:00AM - 5:00PM</span>
-						<h3><a href="">EVENT VENUE</a></h3>
-						<center>
-							<ul>
-								<li><span class="ion-ios-people"></span>20 Guests</li>
-							</ul>
-							<a href="<?= site_url('home/book') ?>" class="btn btn-primary"> <span>&nbsp;&nbsp; Book now &nbsp;&nbsp;</span></a>
-							&nbsp;&nbsp;
-							<a href="#" class="btn btn-primary"> <span>&nbsp; More Photos
-										&nbsp;</span></a>
-						</center>
-					</div>
-				</div>
-			</div>
-
+				<?php endforeach; ?>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>
 
 <?php $this->load->view('modules/home/partials/_testimonial_section'); ?>
+<?php $this->load->view('modules/home/partials/_facebook_recent_post_section'); ?>
 
 
-<section class="ftco-section">
-	<div class="container">
-		<div class="row justify-content-center pb-4">
-			<div class="col-md-12 heading-section text-center ftco-animate">
-				<h2 class="mb-4">Facebook Recent Post</h2>
-			</div>
-		</div>
-		<div class="row d-flex">
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-					<a href="#" class="block-20"
-					   style="background-image: url('<?= site_url('assets/images/29.jpg') ?>');">
-					</a>
-					<div class="text mt-3 float-right d-block">
-						<div class="d-flex align-items-center mb-4 topp">
-							<div class="one">
-								<span class="day">22</span>
-							</div>
-							<div class="two">
-								<span class="yr">&nbsp;2022</span>
-								<span class="mos">&nbsp;MAY</span>
-							</div>
-						</div>
-						<h3 class="heading"><a href="#">By
-								Cristine Joy Bermudo Dap-og form Facebook Page Stories</a></h3>
 
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-					<a href="#" class="block-20"
-					   style="background-image: url('<?= site_url('assets/images/30.jpg') ?>');">
-					</a>
-					<div class="text mt-3 float-right d-block">
-						<div class="d-flex align-items-center mb-4 topp">
-							<div class="one">
-								<span class="day">08</span>
-							</div>
-							<div class="two">
-								<span class="yr">&nbsp;&nbsp;2022</span>
-								<span class="mos">&nbsp;&nbsp;MAY</span>
-							</div>
-						</div>
-						<h3 class="heading"><a href="#">By
-								Andrea Hocon Mosquera form Facebook Page Stories</a></h3>
-
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry">
-					<a href="#" class="block-20"
-					   style="background-image: url('<?= site_url('assets/images/31.jpg') ?>');">
-					</a>
-					<div class="text mt-3 float-right d-block">
-						<div class="d-flex align-items-center mb-4 topp">
-							<div class="one">
-								<span class="day">09</span>
-							</div>
-							<div class="two">
-								<span class="yr">&nbsp;&nbsp;2022</span>
-								<span class="mos">&nbsp;&nbsp;MAY</span>
-							</div>
-						</div>
-						<h3 class="heading"><a href="#">By
-								Riza Joy Atencio Catinoy form Facebook Page Stories</a></h3>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>

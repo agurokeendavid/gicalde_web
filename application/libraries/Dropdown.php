@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dropdown_library
+class Dropdown
 {
 	private static $cache = array();
 
@@ -48,20 +48,6 @@ class Dropdown_library
 					3 => 'Widow/Widower',
 					4 => 'Divorced',
 					5 => 'Separated'
-				);
-				break;
-			case 'room_type':
-				$array = array(
-					'' => 'Select Value',
-					1 => 'AIRCON',
-					2 => 'ELECTRIC FAN',
-				);
-				break;
-			case 'place_type':
-				$array = array(
-					'' => 'Select Value',
-					1 => 'NEAR BEACH',
-					2 => 'KITCHEN',
 				);
 				break;
 			case 'payment_status':

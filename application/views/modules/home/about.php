@@ -1,5 +1,4 @@
 <?php $this->load->view('modules/home/partials/_hero-wrap_div'); ?>
-<?php $this->load->view('pages/home/partials/_calendar_schedule_section'); ?>
 
 
 <section class="ftco-section services-section bg-light">
@@ -89,8 +88,8 @@
 	</div>
 </section>
 
-<?php $this->load->view('pages/home/view/_summary_section') ?>
+<?php $this->load->view('modules/home/partials/_summary_section') ?>
 <br>
 <br>
 
-<?php $this->load->view('pages/home/view/_testimonial_section'); ?>
+<?php $this->load->view('modules/home/partials/_testimonial_section'); ?>

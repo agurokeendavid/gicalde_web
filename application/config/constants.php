@@ -85,6 +85,7 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 const SYSTEM_TITLE = 'Gicalde Farm Resort';
+const SYSTEM_LINK = 'www.gicaldefarm.com';
 const DEFAULT_ADMIN_ID = 1;
 const RESULT_FAILED = 0;
 const RESULT_SUCCESS = 1;

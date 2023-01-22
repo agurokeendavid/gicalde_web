@@ -12,7 +12,7 @@
 							<?= $this->session->userdata('user')['first_name'] ?>
 						</p>
 						<p class="sidebar-designation">
-							<?= Dropdown_library::get_static('roles', $this->session->userdata('user')['role_id'], 'view'); ?>
+							<?= Dropdown::get_static('roles', $this->session->userdata('user')['role_id'], 'view'); ?>
 						</p>
 					</div>
 				</div>
@@ -72,7 +72,8 @@
 						<span class="menu-title">Staffs</span>
 						<i class="typcn typcn-chevron-right menu-arrow"></i>
 					</a>
-					<div class="collapse <?= (strtolower($page_data['section']) == 'add staff' || strtolower($page_data['section']) == 'manage staffs' || strtolower($page_data['section']) == 'update staff') ? 'show' : null; ?>" id="staff_nav">
+					<div class="collapse <?= (strtolower($page_data['section']) == 'add staff' || strtolower($page_data['section']) == 'manage staffs' || strtolower($page_data['section']) == 'update staff') ? 'show' : null; ?>"
+						 id="staff_nav">
 						<ul class="nav flex-column sub-menu">
 							<li class="nav-item"><a
 										class="nav-link <?= (strtolower($page_data['section']) == 'add staff') ? 'active' : null; ?>"
@@ -80,7 +81,52 @@
 							</li>
 							<li class="nav-item">
 								<a class="nav-link <?= (strtolower($page_data['section']) == 'manage staffs' || strtolower($page_data['section']) == 'update staff') ? 'active' : null; ?>"
-								   href="#">Manage Staffs</a>
+								   href="<?= site_url('users') ?>">Manage Staffs</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+
+				<li
+						class="nav-item <?= (strtolower($page_data['section']) == 'add room' || strtolower($page_data['section']) == 'manage rooms' || strtolower($page_data['section']) == 'update room') ? 'active' : null; ?>">
+					<a class="nav-link" data-toggle="collapse" href="#rooms_nav" aria-expanded="false"
+					   aria-controls="rooms_nav">
+						<i class="typcn typcn-home menu-icon"></i>
+						<span class="menu-title">Rooms</span>
+						<i class="typcn typcn-chevron-right menu-arrow"></i>
+					</a>
+					<div class="collapse <?= (strtolower($page_data['section']) == 'add room' || strtolower($page_data['section']) == 'manage rooms' || strtolower($page_data['section']) == 'update room') ? 'show' : null; ?>"
+						 id="rooms_nav">
+						<ul class="nav flex-column sub-menu">
+							<li class="nav-item"><a
+										class="nav-link <?= (strtolower($page_data['section']) == 'add room') ? 'active' : null; ?>"
+										href="<?= site_url('rooms/form') ?>">Add Room</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link <?= (strtolower($page_data['section']) == 'manage rooms' || strtolower($page_data['section']) == 'update room') ? 'active' : null; ?>"
+								   href="<?= site_url('rooms') ?>">Manage Rooms</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+
+				<li class="nav-item <?= (strtolower($page_data['section']) == 'add cottage' || strtolower($page_data['section']) == 'manage cottages' || strtolower($page_data['section']) == 'update cottage') ? 'active' : null; ?>">
+					<a class="nav-link" data-toggle="collapse" href="#cottages_nav" aria-expanded="false"
+					   aria-controls="cottages_nav">
+						<i class="typcn typcn-waves menu-icon"></i>
+						<span class="menu-title">Cottages</span>
+						<i class="typcn typcn-chevron-right menu-arrow"></i>
+					</a>
+					<div class="collapse <?= (strtolower($page_data['section']) == 'add cottage' || strtolower($page_data['section']) == 'manage cottages' || strtolower($page_data['section']) == 'update cottage') ? 'show' : null; ?>"
+						 id="cottages_nav">
+						<ul class="nav flex-column sub-menu">
+							<li class="nav-item"><a
+										class="nav-link <?= (strtolower($page_data['section']) == 'add cottage') ? 'active' : null; ?>"
+										href="<?= site_url('cottages/form') ?>">Add Cottage</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link <?= (strtolower($page_data['section']) == 'manage cottages' || strtolower($page_data['section']) == 'update cottage') ? 'active' : null; ?>"
+								   href="<?= site_url('cottages') ?>">Manage Cottages</a>
 							</li>
 						</ul>
 					</div>

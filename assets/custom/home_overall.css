@@ -1,11 +1,3 @@
-table > thead > tr > th, table > tfoot > tr > th, table > thead > tr > td, table > tbody > tr > td {
-	text-align: center !important;
-}
-
-.error {
-	color: red !important;
-}
-
 p {
 	color: #1a1a1a !important;
 }

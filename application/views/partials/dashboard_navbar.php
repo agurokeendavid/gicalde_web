@@ -64,3 +64,6 @@
 		</button>
 	</div>
 </nav>
+<?php $this->load->view('partials/dashboard_update_profile_modal'); ?>
+<?php $this->load->view('partials/dashboard_change_password_modal'); ?>
+<?php $this->load->view('partials/dashboard_set_payment_details_modal'); ?>

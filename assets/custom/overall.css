@@ -1,0 +1,11 @@
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+	background-color: #000000 !important;
+}
+
+table > thead > tr > th, table > tfoot > tr > th, table > thead > tr > td, table > tbody > tr > td, table > tfoot > tr > td {
+	text-align: center !important;
+}
+
+.error {
+	color: red !important;
+}
