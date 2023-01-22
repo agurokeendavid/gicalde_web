@@ -91,8 +91,10 @@ const RESULT_FAILED = 0;
 const RESULT_SUCCESS = 1;
 const ROLE_ADMINISTRATOR = 1;
 const ROLE_STAFF = 2;
+const ROLE_CLIENT = 3;
 const BOOL_NO = 0;
 const BOOL_YES = 1;
+const USER_DEFAULT_PASSWORD = 'user123$';
 
 date_default_timezone_set('Asia/Singapore');
 define('DATE_DISPLAY_FORMAT', 'F d, Y');
@@ -101,3 +103,19 @@ define('DATE_NOW', date('Y-m-d'));
 define('YEAR_NOW', date('Y'));
 define('MONTH_NOW', date('F'));
 define('NOW', date('Y-m-d H:i:s'));
+
+define('SENDER_USERNAME', 'agurokeendavid@gmail.com');
+define('SENDER_PASSWORD', 'wvfbiyzbqutbsikz');
+define('SENDER_HOST', 'smtp.gmail.com');
+define('SENDER_PORT', 465);
+
+define('RESERVATION_STATUS_PENDING', 1);
+define('RESERVATION_STATUS_ONGOING', 2);
+define('RESERVATION_STATUS_COMPLETED', 3);
+define('RESERVATION_STATUS_CANCELLED', 4);
+define('RESERVATION_STATUS_CHECKIN', 5);
+
+define('PAYMENT_STATUS_PENDING', 1);
+define('PAYMENT_STATUS_PARTIAL', 2);
+define('PAYMENT_STATUS_FULL', 3);
+define('PAYMENT_STATUS_LATE', 4);

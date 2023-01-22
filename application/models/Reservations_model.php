@@ -1,40 +1,18 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Users_model extends CI_Model
+class Reservations_model extends CI_Model
 {
-	private $_table_name = 'users';
+	private $_table_name = 'reservations';
 
 	public function __construct()
 	{
 		parent::__construct();
 	}
 
-	public function does_user_exist_by_username($username)
+	public function get_all_by_reservation_status($reservation_status)
 	{
-		return $this->db->where('username', $username)
-			->where('deleted_at', null)
-			->get($this->_table_name)
-			->num_rows();
-	}
-
-	public function login($username, $password)
-	{
-		$user = $this->db->where('username', $username)
-			->where('deleted_at', null)
-			->get($this->_table_name)
-			->row_array();
-
-		if (!$user) return null;
-
-		if (!password_verify($password, $user['password'])) return nulll;
-
-		return $user;
-	}
-
-	public function get_all_by_role_id($role_id)
-	{
-		return $this->db->where('role_id', $role_id)
+		return $this->db->where('reservation_status', $reservation_status)
 			->where('deleted_at', null)
 			->get($this->_table_name)
 			->result_array();
