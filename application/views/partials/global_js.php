@@ -7,8 +7,12 @@
 	const RESULT_SUCCESS = <?= RESULT_SUCCESS; ?>;
 	const ROLE_ADMINISTRATOR = <?= ROLE_ADMINISTRATOR; ?>;
 	const ROLE_STAFF = <?= ROLE_STAFF; ?>;
-	const RESULT_STATUS = '<?= $this->session->userdata('RESULT_STATUS'); ?>'
-	const RESULT_MESSAGE = '<?= $this->session->userdata('RESULT_MESSAGE'); ?>'
+	const RESERVATION_STATUS_PENDING = <?= RESERVATION_STATUS_PENDING ?>;
+	const RESERVATION_STATUS_APPROVED = <?= RESERVATION_STATUS_APPROVED ?>;
+	const RESERVATION_STATUS_COMPLETED = <?= RESERVATION_STATUS_COMPLETED ?>;
+	const RESERVATION_STATUS_CANCELLED = <?= RESERVATION_STATUS_CANCELLED ?>;
+	const RESULT_STATUS = '<?= $this->session->userdata('RESULT_STATUS'); ?>';
+	const RESULT_MESSAGE = '<?= $this->session->userdata('RESULT_MESSAGE'); ?>';
 	<?php
 	$this->session->unset_userdata('RESULT_STATUS');
 	$this->session->unset_userdata('RESULT_MESSAGE');

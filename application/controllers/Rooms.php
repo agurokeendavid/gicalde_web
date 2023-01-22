@@ -47,6 +47,17 @@ class Rooms extends CI_Controller
 		die();
 	}
 
+	public function get($id = null)
+	{
+		$room = $this->M_rooms->get($id);
+		if (!$room)
+		{
+			show_404();
+			die();
+		}
+		exit(json_encode($room));
+	}
+
 	public function index()
 	{
 		$data['page_data'] = array(

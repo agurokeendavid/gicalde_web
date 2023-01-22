@@ -1,6 +1,44 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+if ( ! function_exists('send_update_reservation_status')) {
+	function send_update_reservation_status($name, $email_address, $reservation_status) {
+		$subject = 'Update Reservation Status';
+		$mailContent = "<!DOCTYPE html>";
+		$mailContent .= "<html>";
+		$mailContent .= "<head>";
+		$mailContent .= "<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />";
+		$mailContent .= "<title></title>";
+		$mailContent .= "<meta name='viewport' content='width=device-width, initial-scale=1.0' />";
+		$mailContent .= "</head>";
+		$mailContent .= "<body style='margin: 0; padding: 0;'>";
+		$mailContent .= "<table align='center' border='0' cellpadding='0' cellspacing='0' width='600' style='border: 1px solid #ccc;'>";
+		$mailContent .= "<tr>";
+		$mailContent .= "<td bgcolor='#fafafa' style='padding: 40px 30px 40px 30px;'>";
+		$mailContent .= "<table border='0' cellpadding='0' cellspacing='0' width='100%'>";
+		$mailContent .= "<tr>";
+		$mailContent .= "<td style='color: #153643; font-family: Arial, sans-serif; font-size: 24px;'>";
+		$mailContent .= "<b>" . $subject . " | " . SYSTEM_TITLE . "</b>";
+		$mailContent .= "</td>";
+		$mailContent .= "</tr>";
+		$mailContent .= "<tr>";
+		$mailContent .= "<td style='padding: 20px 0 30px 0; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;'>";
+		$mailContent .= "<p>Hi " . $name . ",</p>";
+		$mailContent .= "<p>The status of your reservation has been successfully updated to <b>" . Dropdown::get_static('reservation_status', $reservation_status, 'view') . "</b></p>";
+		$mailContent .= "<p>If your application has been approved, please bring the payment receipt.</p>";
+		$mailContent .= "<p>NOTE: This is a system generated message, do not reply or send to this address.</p>";
+		$mailContent .= "<p><strong>" . SYSTEM_TITLE . "</strong></p>";
+		$mailContent .= "</td>";
+		$mailContent .= "</tr>";
+		$mailContent .= "</tr>";
+		$mailContent .= "</table>";
+		$mailContent .= "</table>";
+		$mailContent .= "</body>";
+		$mailContent .= "</html>";
+		send_email_content($email_address, $subject, $mailContent);
+	}
+}
+
 if ( ! function_exists('send_contact_us')) {
 	function send_contact_us($name, $email_address, $subject, $message) {
 		$subject_title = 'Contact Us';

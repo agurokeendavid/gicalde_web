@@ -63,7 +63,7 @@ class Dropdown
 				$array = array(
 					'' => 'Select Value',
 					1 => 'PENDING',
-					2 => 'ONGOING',
+					2 => 'APPROVED',
 					3 => 'COMPLETED',
 					4 => 'CANCELLED',
 				);

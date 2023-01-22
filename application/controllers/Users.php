@@ -32,6 +32,18 @@ class Users extends CI_Controller
 		);
 	}
 
+	public function get($id)
+	{
+		$user = $this->M_users->get($id);
+		if (!$user)
+		{
+			show_404();
+			die();
+		}
+
+		exit(json_encode($user));
+	}
+
 	public function delete()
 	{
 		if ($post_data = $this->input->post()) {
@@ -60,6 +72,7 @@ class Users extends CI_Controller
 		$this->load->view('modules/users/index', $data);
 		$this->load->view('layouts/dashboard_foot', $data);
 	}
+
 
 	public function form($id = null)
 	{

@@ -144,7 +144,7 @@ class Home extends CI_Controller
 					) + $this->_create_additional;
 
 				$this->M_users->insert($user_data);
-				send_account_info($post_data['first_name'], $post_data['last_name'], $email_address, USER_DEFAULT_PASSWORD);
+//				send_account_info($post_data['first_name'], $post_data['last_name'], $email_address, USER_DEFAULT_PASSWORD);
 			}
 
 			$this->M_reservations->insert($reservation_data);

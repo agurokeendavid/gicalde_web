@@ -14,16 +14,14 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="set_payment_details_gcash_name">GCash Name: <span
-										class="text-danger">*</span></label>
+								<label for="set_payment_details_gcash_name">GCash Name: <code>*</code></label>
 								<input type="text" class="form-control" id="set_payment_details_gcash_name"
 									   name="set_payment_details_gcash_name" placeholder="Enter GCash Name" required>
 							</div>
 						</div>
 						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="set_payment_details_gcash_mobile_number">GCash Mobile Number: <span
-										class="text-danger">*</span></label>
+								<label for="set_payment_details_gcash_mobile_number">GCash Mobile Number: <code>*</code></label>
 								<input type="text" class="form-control" id="set_payment_details_gcash_mobile_number"
 									   name="set_payment_details_gcash_mobile_number" placeholder="Enter GCash Mobile Number" required>
 							</div>
@@ -31,8 +29,7 @@
 
 						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="set_payment_details_bank_account_name">Bank Account Name: <span
-										class="text-danger">*</span></label>
+								<label for="set_payment_details_bank_account_name">Bank Account Name: <code>*</code></label>
 								<input type="text" class="form-control" id="set_payment_details_bank_account_name"
 									   name="set_payment_details_bank_account_name" placeholder="Enter bank account number" required>
 							</div>
@@ -40,8 +37,7 @@
 
 						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="set_payment_details_bank_account_number">Bank Account Number: <span
-										class="text-danger">*</span></label>
+								<label for="set_payment_details_bank_account_number">Bank Account Number: <code>*</code></label>
 								<input type="text" class="form-control" id="set_payment_details_bank_account_number"
 									   name="set_payment_details_bank_account_number" placeholder="Enter bank account number" required>
 							</div>

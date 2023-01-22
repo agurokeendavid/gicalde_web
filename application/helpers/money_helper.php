@@ -14,6 +14,11 @@ if (!function_exists('money_php')) {
 	function money_php($_string = FALSE, $_sign = FALSE)
 	{
 
+		if (!$_string)
+		{
+			return '&#8369; 0.00';
+		}
+
 		$_return = '';
 
 		// if ( $_string != '' ) {

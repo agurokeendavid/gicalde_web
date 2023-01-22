@@ -67,15 +67,39 @@
 										<td><?= money_php($value['total_price']); ?></td>
 										<td><?= '<div class="badge bg-info">' . get_person_name($value['created_by']) . '</div>' . ' <div>' . view_date($value['created_at'], 'date_am_pm') . '</div>'; ?></td>
 										<td><?= !empty($value['updated_at']) ? '<div class="badge bg-info">' . get_person_name($value['updated_by']) . '</div>' . ' <div>' . view_date($value['updated_at'], 'date_am_pm') . '</div>' : 'N/A' ?></td>
-										<td class="btn-group">
-											<a rel="tooltip" class="btn btn-sm btn-info view-row"
-											   href="javascript:void(0);" data-id="<?= $value['id']; ?>" title="View"><i
-														class="fa fa-eye"></i></a>
-											<a id="edit" rel="tooltip" class="btn btn-sm btn-primary"
-											   href="<?= site_url('rooms/form/' . $value['id']) ?>" title="Update"><i
-														class="fa fa-edit"></i></a>
-											<a href="javascript:void(0);" class="btn btn-sm btn-danger delete-row"
-											   data-id="<?= $value['id']; ?>" title="Delete"><i class="fa fa-trash"></i></a>
+										<td class="dropdown">
+											<button class="btn btn-primary btn-sm dropdown-toggle" type="button"
+													id="dropdown_actions" data-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false">
+												<i class="typcn typcn-cog"></i>
+											</button>
+											<div class="dropdown-menu" aria-labelledby="dropdown_actions">
+												<h6 class="dropdown-header">Actions</h6>
+												<div class="dropdown-divider"></div>
+												<?php if (@$reservation_status) : ?>
+													<?php if ($reservation_status == RESERVATION_STATUS_PENDING) : ?>
+														<button rel="tooltip" class="dropdown-item approve-row" title="Approve" data-id="<?= $value['id']; ?>">Approve
+														</button>
+														<button rel="tooltip" class="dropdown-item cancel-row" title="Cancel" data-id="<?= $value['id']; ?>">
+															Cancel
+														</button>
+														<button rel="tooltip" class="dropdown-item view-row" title="View" data-id="<?= $value['id']; ?>">View Details
+														</button>
+													<?php elseif ($reservation_status == RESERVATION_STATUS_APPROVED) : ?>
+														<button rel="tooltip" class="dropdown-item mark-as-completed-row" title="Mark as Completed" data-id="<?= $value['id']; ?>">Mark as Completed
+														</button>
+														<button rel="tooltip" class="dropdown-item view-row" title="View" data-id="<?= $value['id']; ?>">View Details
+														</button>
+													<?php elseif ($reservation_status == RESERVATION_STATUS_COMPLETED) : ?>
+														<button rel="tooltip" class="dropdown-item view-row" title="View" data-id="<?= $value['id']; ?>">View Details
+														</button>
+													<?php elseif ($reservation_status == RESERVATION_STATUS_CANCELLED) : ?>
+														<button rel="tooltip" class="dropdown-item view-row" title="View" data-id="<?= $value['id']; ?>">View Details
+														</button>
+													<?php endif; ?>
+												<?php endif; ?>
+
+											</div>
 										</td>
 									</tr>
 								<?php endforeach; ?>
@@ -128,3 +152,6 @@
 		</div>
 	</div>
 </div>
+<?php $this->load->view('modules/reservations/index/approve_reservation_modal'); ?>
+<?php $this->load->view('modules/reservations/index/complete_reservation_modal'); ?>
+<?php $this->load->view('modules/reservations/index/view_details_modal') ?>

@@ -27,8 +27,78 @@ class Auth extends CI_Controller
 		);
 	}
 
+	public function get()
+	{
+		$user_id = $this->session->userdata('user')['id'];
+		$user = $this->M_users->get($user_id);
+		if (!$user)
+		{
+			show_404();
+			die();
+		}
+
+		exit(json_encode($user));
+	}
+
+
+	public function change_password()
+	{
+		if ($post_data = $this->input->post()) {
+			$user_id = $this->session->userdata('user')['id'];
+			if ($post_data['new_password_change_password'] != $post_data['verify_new_password_change_password']) {
+				exit(json_encode(
+					array(
+						'status' => RESULT_FAILED,
+						'message' => 'New Password and Verify New Password is not the same.'
+					)
+				));
+			}
+			$password_hashed = password_hash($post_data['new_password_change_password'], PASSWORD_DEFAULT);
+			$user_data = array(
+				'password' => $password_hashed
+			) + $this->_update_additional;
+			$this->M_users->update($user_data, $user_id);
+			exit(json_encode(
+				array(
+					'status' => RESULT_SUCCESS,
+					'message' => 'Password has been successfully changed.'
+				)
+			));
+		}
+
+	}
+
+	public function update_profile()
+	{
+		if ($post_data = $this->input->post()) {
+			$id = $this->session->userdata('user')['id'];
+			$data = array(
+					'code' => $post_data['update_profile_code'],
+					'first_name' => $post_data['update_profile_first_name'],
+					'middle_name' => $post_data['update_profile_middle_name'],
+					'last_name' => $post_data['update_profile_last_name'],
+					'dob' => $post_data['update_profile_dob'],
+					'gender' => $post_data['update_profile_gender'],
+					'contact_no' => $post_data['update_profile_contact_no'],
+					'address' => $post_data['update_profile_address'],
+				) + $this->_update_additional;
+
+			$this->M_users->update($data, $id);
+			exit(json_encode(
+				array(
+					'status' => RESULT_SUCCESS,
+					'message' => 'Profile has been successfully updated.'
+				)
+			));
+		}
+		show_404();
+		die();
+	}
+
 	public function logout()
 	{
+		insert_audit_trail($this->session->userdata('user')['username'], 'LOGGED OUT');
+		$this->session->unset_userdata('user');
 		$this->session->set_userdata('RESULT_STATUS', RESULT_SUCCESS);
 		$this->session->set_userdata('RESULT_MESSAGE', 'Account has been successfully logged out.');
 		redirect('auth/login');
@@ -52,7 +122,7 @@ class Auth extends CI_Controller
 					$redirect_url = site_url('dashboard/admin_main');
 					break;
 				case ROLE_STAFF:
-					$redirect_url = site_url('dashboard/staff_main');
+					$redirect_url = site_url('dashboard/admin_main');
 					break;
 				default:
 					$redirect_url = null;
@@ -60,6 +130,7 @@ class Auth extends CI_Controller
 			}
 
 			$this->session->set_userdata('user', $user);
+			insert_audit_trail($user['username'], 'LOGGED IN');
 			exit(json_encode(
 				array(
 					'status' => RESULT_SUCCESS,

@@ -100,3 +100,4 @@
 		</div>
 	</div>
 </div>
+<?php $this->load->view('modules/cottages/index/view_details_modal') ?>

@@ -62,6 +62,17 @@ class Cottages extends CI_Controller
 		$this->load->view('layouts/dashboard_foot', $data);
 	}
 
+	public function get($id = null)
+	{
+		$cottage = $this->M_cottages->get($id);
+		if (!$cottage)
+		{
+			show_404();
+			die();
+		}
+		exit(json_encode($cottage));
+	}
+
 	public function form($id = null)
 	{
 		if ($post_data = $this->input->post()) {

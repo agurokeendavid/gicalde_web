@@ -114,3 +114,4 @@
 		</div>
 	</div>
 </div>
+<?php $this->load->view('modules/rooms/index/view_details_modal') ?>

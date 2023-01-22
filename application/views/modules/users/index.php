@@ -112,3 +112,4 @@
 		</div>
 	</div>
 </div>
+<?php $this->load->view('modules/users/index/view_details_modal') ?>

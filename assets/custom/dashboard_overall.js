@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
 	const updateProfileFormEl = $('#update_profile_form');
 	const changePasswordFormEl = $('#change_password_form');
 	const updateProfileLinkEl = $('#update_profile_link');
@@ -10,7 +10,7 @@ $(function() {
 	const setPaymentDetailsFormEl = $('#set_payment_details_form');
 
 
-	setPaymentDetailsFormEl.on('submit', function(e) {
+	setPaymentDetailsFormEl.on('submit', function (e) {
 		e.preventDefault();
 
 		if (!$(this).valid()) return;
@@ -53,14 +53,14 @@ $(function() {
 				AmagiLoader.hide();
 			}
 		});
-	})
+	});
 
-	setPaymentDetailsLinkEl.on('click', function(e) {
+	setPaymentDetailsLinkEl.on('click', function (e) {
 		e.preventDefault();
 		setPaymentDetailsModalEl.modal('toggle');
 	});
 
-	setPaymentDetailsModalEl.on('shown.bs.modal', function(e) {
+	setPaymentDetailsModalEl.on('shown.bs.modal', function (e) {
 		e.preventDefault();
 		$.ajax({
 			url: `${BASE_URL}payment_details/get_first`,
@@ -100,7 +100,7 @@ $(function() {
 		});
 	});
 
-	$('.btn-show-info').on('click', function(e) {
+	$('.btn-show-info').on('click', function (e) {
 		e.preventDefault();
 		$.toast({
 			heading: 'Current Page',
@@ -110,16 +110,18 @@ $(function() {
 		});
 	})
 
-	changePasswordLinkEl.on('click', function(e) {
+	changePasswordLinkEl.on('click', function (e) {
 		e.preventDefault();
 		changePasswordModalEl.modal('toggle');
 	});
 
 	changePasswordFormEl.on('submit', function (e) {
 		e.preventDefault();
-		if (!changePasswordFormEl.valid()) return;
+
+		if (!$(this).valid()) return;
+
 		$.ajax({
-			url: `${BASE_URL}users/change_password`,
+			url: `${BASE_URL}auth/change_password`,
 			type: 'POST',
 			async: true,
 			data: $(this).serialize(),
@@ -128,13 +130,13 @@ $(function() {
 				AmagiLoader.show();
 			},
 			success: function (response) {
-				if (response.status == RESULT_SUCCESS) {
+				if (response.status) {
 					Swal.fire({
 						title: 'Success!',
 						text: response.message,
 						icon: 'success'
 					}).then(function () {
-						window.location.reload();
+						location.reload();
 					});
 					return;
 				}
@@ -165,7 +167,7 @@ $(function() {
 	updateProfileLinkEl.on('click', function (e) {
 		e.preventDefault();
 		$.ajax({
-			url: `${base_url}users/get`,
+			url: `${BASE_URL}auth/get`,
 			type: 'GET',
 			async: true,
 			data: null,
@@ -175,7 +177,7 @@ $(function() {
 			},
 			success: function (response) {
 				if (response) {
-					$('#update_profile_employee_code').val(response.employee_code);
+					$('#update_profile_code').val(response.code);
 					$('#update_profile_first_name').val(response.first_name);
 					$('#update_profile_middle_name').val(response.middle_name);
 					$('#update_profile_last_name').val(response.last_name);
@@ -208,9 +210,11 @@ $(function() {
 
 	updateProfileFormEl.on('submit', function (e) {
 		e.preventDefault();
-		if (!updateProfileFormEl.valid()) return;
+
+		if (!$(this).valid()) return;
+
 		$.ajax({
-			url: `${base_url}users/update_profile`,
+			url: `${BASE_URL}auth/update_profile`,
 			type: 'POST',
 			async: true,
 			data: $(this).serialize(),
@@ -219,13 +223,13 @@ $(function() {
 				AmagiLoader.show();
 			},
 			success: function (response) {
-				if (response.status == RESULT_SUCCESS) {
+				if (response.status) {
 					Swal.fire({
 						title: 'Success!',
 						text: response.message,
 						icon: 'success'
 					}).then(function () {
-						window.location.reload();
+						location.reload();
 					});
 					return;
 				}
