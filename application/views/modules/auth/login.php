@@ -44,10 +44,10 @@
 										<span class="checkmark"></span>
 									</label>
 								</div>
-								<div class="w-50 text-md-right">
-									<a class="text-info" href="<?= base_url() ?>users/forgot_password">Forgot
-										Password</a>
-								</div>
+<!--								<div class="w-50 text-md-right">-->
+<!--									<a class="text-info" href="--><?php //= base_url() ?><!--users/forgot_password">Forgot-->
+<!--										Password</a>-->
+<!--								</div>-->
 							</div>
 						</form>
 					</div>

@@ -21,8 +21,8 @@
 					character and positive attitude that are determined to make your experience worthwhile and
 					memorable. We envision ourselves as a widely known resort to be your first choice for your
 					tourist destination, recreation and event venue.</p> <br> <br>
-				<p><a href="" class="btn btn-primary py-3 px-4">BOOK &nbsp;NOW</a></p><br> <br>
-				<h2 class="mb-4">We take care of everything so you can unwind and enjoy your vacation.</h2>
+				<p><a href="<?= site_url('home')?>" class="btn btn-primary py-3 px-4">BOOK &nbsp;NOW</a></p><br> <br>
+				<h2 class="mb-4">We take care of everything, so you can unwind and enjoy your vacation.</h2>
 
 			</div>
 			<div class="col-md-6">

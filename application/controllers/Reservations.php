@@ -79,7 +79,7 @@ class Reservations extends CI_Controller
 						'reservation_status' => RESERVATION_STATUS_APPROVED
 					) + $this->_update_additional;
 				$this->M_reservations->update($reservation_data, $reservation_id);
-				send_update_reservation_status($reservation['name'], $reservation['email_address'], RESERVATION_STATUS_APPROVED);
+				send_update_reservation_status($reservation['last_name'] . ', ' . $reservation['first_name'], $reservation['email_address'], RESERVATION_STATUS_APPROVED);
 				exit(json_encode(
 					array(
 						'status' => RESULT_SUCCESS,
@@ -103,7 +103,7 @@ class Reservations extends CI_Controller
 						'reservation_status' => RESERVATION_STATUS_COMPLETED
 					) + $this->_update_additional;
 				$this->M_reservations->update($reservation_data, $reservation_id);
-				send_update_reservation_status($reservation['name'], $reservation['email_address'], RESERVATION_STATUS_APPROVED);
+				send_update_reservation_status($reservation['last_name'] . ', ' . $reservation['first_name'], $reservation['email_address'], RESERVATION_STATUS_COMPLETED);
 				exit(json_encode(
 					array(
 						'status' => RESULT_SUCCESS,
@@ -124,7 +124,7 @@ class Reservations extends CI_Controller
 					) + $this->_update_additional;
 
 				$this->M_reservations->update($reservation_data, $reservation_id);
-				send_update_reservation_status($reservation['name'], $reservation['email_address'], RESERVATION_STATUS_APPROVED);
+				send_update_reservation_status($reservation['last_name'] . ', ' . $reservation['first_name'], $reservation['email_address'], RESERVATION_STATUS_CANCELLED);
 				exit(json_encode(
 					array(
 						'status' => RESULT_SUCCESS,

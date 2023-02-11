@@ -55,7 +55,7 @@
 					<div class="item">
 						<div class="testimony-wrap py-4">
 							<div class="text">
-								<p class="mb-4">I could say the resort’s services were great! Because they’ve let us
+								<p class="mb-4">I could say the farm’s services were great! Because they’ve let us
 									use their cooking materials for free which is what we really needed because we
 									forgot to bring some. Even though the resort is a little far from the
 									convenience stores, they are complete with stuff, so it isn’t really a problem

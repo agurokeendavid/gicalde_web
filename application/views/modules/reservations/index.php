@@ -57,7 +57,7 @@
 								<?php foreach ($reservations as $value) : ?>
 									<tr>
 										<td><?= !empty($value['room_id']) ? get_value_by_table_name($value['room_id'], 'rooms', 'name') : 'N/A'; ?></td>
-										<td><?= !empty($value['cottage_id']) ? get_value_by_table_name($value['cottage_id'], 'rooms', 'name') : 'N/A'; ?></td>
+										<td><?= !empty($value['cottage_id']) ? get_value_by_table_name($value['cottage_id'], 'cottages', 'name') : 'N/A'; ?></td>
 										<td><?= $value['last_name'] . ', ' . $value['first_name']; ?></td>
 										<td><?= view_date($value['check_in_date']); ?></td>
 										<td><?= view_date($value['check_out_date']); ?></td>

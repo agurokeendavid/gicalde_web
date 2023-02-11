@@ -13,6 +13,8 @@ class Audit_trail_model extends CI_Model
 	public function get_all()
 	{
 		return $this->db->where('deleted_at', null)
+			->order_by('created_at', 'desc')
+			->limit(5)
 			->get($this->_table_name)
 			->result_array();
 	}
