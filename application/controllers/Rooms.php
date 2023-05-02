@@ -250,14 +250,17 @@ class Rooms extends CI_Controller
 				$room_id = $this->M_rooms->update($room_data, $id);
 				foreach ($photos as $key => $value) {
 
-					if (!$value) continue;
+					if (empty($value)) continue;
+
+					$this->M_room_photos->delete_by_room_id_and_photo_key($this->_delete_additional, $room_id, $key);
 
 					$room_photos_data = array(
 						'room_id' => $room_id,
+						'photo_key' => $key,
 						'photo_file_name' => $value
-					) + $this->_update_additional;
+					) + $this->_create_additional;
 
-					$this->M_room_photos->update_by_room_id_and_photo_key($room_photos_data, $room_id, $key);
+					$this->M_room_photos->insert($room_photos_data);
 				}
 
 				$this->db->trans_complete();

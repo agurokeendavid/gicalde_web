@@ -121,13 +121,16 @@ class Cottages extends CI_Controller
 				);
 				foreach ($photos as $key => $value) {
 
-					if (!$value) continue;
+					if (empty($value)) continue;
+
+					$this->M_cottages_photos->delete_by_cottages_id_and_photo_key($this->_delete_additional, $cottages_id, $key);
 
 					$cottages_photos = array(
+							'cottages_id' => $cottages_id,
 							'photo_key' => $key,
 							'photo_file_name' => $value
-						) + $this->_update_additional;
-					$this->M_cottages_photos->update_by_cottages_id_and_photo_key($cottages_photos, $cottages_id, $key);
+						) + $this->_create_additional;
+					$this->M_cottages_photos->insert($cottages_photos);
 				}
 				$this->db->trans_complete();
 				exit(json_encode(

@@ -28,6 +28,23 @@ class Cottages_photos_model extends CI_Model
 			->result_array();
 	}
 
+	public function delete_by_cottages_id_and_photo_key($data, $cottages_id, $photo_key)
+	{
+		$this->db->where('cottages_id', $cottages_id)
+			->where('photo_key', $photo_key)
+			->update($this->_table_name, $data);
+
+		return $cottages_id;
+	}
+
+	public function delete_by_cottages_id($data, $cottages_id)
+	{
+		$this->db->where('cottages_id', $cottages_id)
+			->update($this->_table_name, $data);
+
+		return $cottages_id;
+	}
+
 	public function update_by_cottages_id_and_photo_key($data, $cottages_id, $photo_key)
 	{
 		$this->db->where('cottages_id', $cottages_id)

@@ -9,6 +9,7 @@
 <script src="<?= site_url('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') ?>"></script>
 <script src="<?= site_url('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') ?>"></script>
 <script src="<?= site_url('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js') ?>"></script>
+<script src="<?= site_url('assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js') ?>"></script>
 <script src="<?= site_url('assets/plugins/jszip/jszip.min.js') ?>"></script>
 <script src="<?= site_url('assets/plugins/pdfmake/pdfmake.min.js') ?>"></script>
 <script src="<?= site_url('assets/plugins/pdfmake/vfs_font.js') ?>"></script>

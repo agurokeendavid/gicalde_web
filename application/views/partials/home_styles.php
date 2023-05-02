@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="<?= site_url('assets/temps/home/css/icomoon.css'); ?>">
 <link rel="stylesheet" href="<?= site_url('assets/plugins/jquery-toast-plugin/jquery.toast.min.css') ?>">
 <link rel="stylesheet" href="<?= site_url('assets/plugins/sweetalert2/sweetalert2.min.css') ?>">
+<link rel="stylesheet" href="<?= site_url('assets/plugins/jquery-ui/jquery-ui.css') ?>">
+<link rel="stylesheet" href="<?= site_url('assets/plugins/fullcalendar/fullcalendar.min.css') ?>">
 <link rel="stylesheet" href="<?= site_url('assets/temps/home/css/style.css'); ?>">
 <link rel="stylesheet" href="<?= site_url('assets/custom/home_overall.css'); ?>">
 <link rel="stylesheet" href="<?= site_url('assets/custom/overall.css')?>">

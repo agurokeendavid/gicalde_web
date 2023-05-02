@@ -12,7 +12,8 @@ class Home extends CI_Controller
 			'Cottages_model' => 'M_cottages',
 			'Cottages_photos_model' => 'M_cottages_photos',
 			'Reservations_model' => 'M_reservations',
-			'Users_model' => 'M_users'
+			'Users_model' => 'M_users',
+			'Galleries_model' => 'M_galleries',
 		));
 
 		$this->_create_additional = array(
@@ -37,27 +38,29 @@ class Home extends CI_Controller
 			'module' => 'Home',
 			'section' => 'Main'
 		);
-		$rooms = $this->M_rooms->get_all_for_viewing();
+		$rooms = $this->M_rooms->get_all();
 		if (!empty($rooms)) {
 			foreach ($rooms as $key => $value) {
-				$room_photo = $this->M_room_photos->get_first_by_room_id($value['id']);
-				if (empty($room_photo)) continue;
+				$room_photos = $this->M_room_photos->get_all_by_room_id($value['id']);
+				if (empty($room_photos)) continue;
 
-				$rooms[$key]['room_photos_id'] = $room_photo['id'];
-				$rooms[$key]['photo_key'] = $room_photo['photo_key'];
-				$rooms[$key]['photo_file_name'] = $room_photo['photo_file_name'];
+//				$rooms[$key]['room_photos_id'] = $room_photo['id'];
+//				$rooms[$key]['photo_key'] = $room_photo['photo_key'];
+//				$rooms[$key]['photo_file_name'] = $room_photos['photo_file_name'];
+				$rooms[$key]['room_photos'] = $room_photos;
 			}
 		}
 		$data['rooms'] = $rooms;
-		$cottages = $this->M_cottages->get_all_for_viewing();
+		$cottages = $this->M_cottages->get_all();
 		if (!empty($cottages)) {
 			foreach ($cottages as $key => $value) {
-				$cottage_photo = $this->M_cottages_photos->get_first_by_cottages_id($value['id']);
-				if (empty($cottage_photo)) continue;
+				$cottage_photos = $this->M_cottages_photos->get_all_by_cottages_id($value['id']);
+				if (empty($cottage_photos)) continue;
 
-				$cottages[$key]['cottages_photos_id'] = $cottage_photo['id'];
-				$cottages[$key]['photo_key'] = $cottage_photo['photo_key'];
-				$cottages[$key]['photo_file_name'] = $cottage_photo['photo_file_name'];
+//				$cottages[$key]['cottages_photos_id'] = $cottage_photo['id'];
+//				$cottages[$key]['photo_key'] = $cottage_photo['photo_key'];
+//				$cottages[$key]['photo_file_name'] = $cottage_photo['photo_file_name'];
+				$cottages[$key]['cottage_photos'] = $cottage_photos;
 			}
 		}
 		$data['cottages'] = $cottages;
@@ -81,6 +84,15 @@ class Home extends CI_Controller
 	public function book()
 	{
 		if ($post_data = $this->input->post()) {
+			$reservation = $this->M_reservations->does_reservation_exist($post_data['check_in_date']);
+			if ($reservation) {
+				exit(json_encode(
+					array(
+						'status' => RESULT_FAILED,
+						'message' => 'Your check in date has been already book by the another user.'
+					)
+				));
+			}
 			$this->db->trans_start();
 			$generated_reference = "GICALDE" . date('Y') . '-' . strtoupper(generateRandomString());
 			$email_address = strtolower($post_data['email_address']);
@@ -216,26 +228,7 @@ class Home extends CI_Controller
 
 	public function gallery()
 	{
-		$photos = array();
-		$room_photos = $this->M_room_photos->get_all();
-		$cottages_photos = $this->M_cottages_photos->get_all();
-
-		if ($room_photos) {
-			foreach ($room_photos as $key => $value) {
-				if (empty($value['photo_file_name'])) continue;
-
-				$photos[] = $value + array('photo_type' => 'rooms');
-			}
-		}
-
-		if ($cottages_photos) {
-			foreach ($cottages_photos as $key => $value) {
-
-				if (empty($value['photo_file_name'])) continue;
-
-				$photos[] = $value + array('photo_type' => 'cottages');
-			}
-		}
+		$photos = $this->M_galleries->get_all();
 
 		$data['page_data'] = array(
 			'module' => 'Home',

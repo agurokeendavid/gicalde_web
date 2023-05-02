@@ -27,7 +27,7 @@ class Users_model extends CI_Model
 
 		if (!$user) return null;
 
-		if (!password_verify($password, $user['password'])) return nulll;
+		if (!password_verify($password, $user['password'])) return null;
 
 		return $user;
 	}

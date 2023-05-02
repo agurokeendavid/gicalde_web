@@ -27,7 +27,7 @@
 								<?php if ($key <= 3) : ?>
 									<div class="col-md-12 ftco-animate">
 										<div class="project-destination1">
-											<div class="img" style="background-image: url('<?= base_url() ?>assets/uploads/<?= $value['photo_type']?>/<?= $value['photo_file_name']?>');">
+											<div class="img" style="background-image: url('<?= base_url() ?>assets/uploads/galleries/<?= $value['photo_file_name']?>');">
 											</div>
 										</div>
 									</div>
@@ -42,7 +42,7 @@
 								<?php if ($key >= 4 && $key <= 7) : ?>
 									<div class="col-md-12 ftco-animate">
 										<div class="project-destination1">
-											<div class="img" style="background-image: url('<?= base_url() ?>assets/uploads/<?= $value['photo_type']?>/<?= $value['photo_file_name']?>');">
+											<div class="img" style="background-image: url('<?= base_url() ?>assets/uploads/galleries/<?= $value['photo_file_name']?>');">
 											</div>
 										</div>
 									</div>
@@ -57,7 +57,7 @@
 								<?php if ($key >= 8 && $key <= 11) : ?>
 									<div class="col-md-12 ftco-animate">
 										<div class="project-destination1">
-											<div class="img" style="background-image: url('<?= base_url() ?>assets/uploads/<?= $value['photo_type']?>/<?= $value['photo_file_name']?>');">
+											<div class="img" style="background-image: url('<?= base_url() ?>assets/uploads/galleries/<?= $value['photo_file_name']?>');">
 											</div>
 										</div>
 									</div>
@@ -72,7 +72,7 @@
 								<?php if ($key >= 12 && $key <= 15) : ?>
 									<div class="col-md-12 ftco-animate">
 										<div class="project-destination1">
-											<div class="img" style="background-image: url('<?= base_url() ?>assets/uploads/<?= $value['photo_type']?>/<?= $value['photo_file_name']?>');">
+											<div class="img" style="background-image: url('<?= base_url() ?>assets/uploads/galleries/<?= $value['photo_file_name']?>');">
 											</div>
 										</div>
 									</div>

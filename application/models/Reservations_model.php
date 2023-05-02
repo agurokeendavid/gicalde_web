@@ -10,6 +10,15 @@ class Reservations_model extends CI_Model
 		parent::__construct();
 	}
 
+	public function does_reservation_exist($check_in_date)
+	{
+		return $this->db->where('deleted_at', null)
+			->where('check_in_date', $check_in_date)
+			->where('reservation_status', RESERVATION_STATUS_APPROVED)
+			->get($this->_table_name)
+			->num_rows();
+	}
+
 	public function get_all_by_reservation_status($reservation_status)
 	{
 		return $this->db->where('reservation_status', $reservation_status)
@@ -18,10 +27,46 @@ class Reservations_model extends CI_Model
 			->result_array();
 	}
 
+
+	public function get_all_room_reservations_by_room_id($room_id)
+	{
+		return $this->db->where('room_id', $room_id)
+			->where('deleted_at', null)
+			->order_by('created_at', 'desc')
+			->get($this->_table_name)
+			->result_array();
+	}
+
+	public function get_all_room_reservations()
+	{
+		return $this->db->where('room_id !=', null)
+			->where('deleted_at', null)
+			->order_by('created_at', 'desc')
+			->get($this->_table_name)
+			->result_array();
+	}
+
+	public function get_all_cottage_reservations()
+	{
+		return $this->db->where('cottage !=', null)
+			->where('deleted_at', null)
+			->order_by('created_at', 'desc')
+			->get($this->_table_name)
+			->result_array();
+	}
+
+	public function get_all_cottage_reservations_by_cottage_id($cottage_id)
+	{
+		return $this->db->where('cottage', $cottage_id)
+			->where('deleted_at', null)
+			->order_by('created_at', 'desc')
+			->get($this->_table_name)
+			->result_array();
+	}
+
 	public function get_all()
 	{
 		return $this->db->where('deleted_at', null)
-			->limit(5)
 			->order_by('created_at', 'desc')
 			->get($this->_table_name)
 			->result_array();
@@ -55,6 +100,14 @@ class Reservations_model extends CI_Model
 			->where('deleted_at', null)
 			->get($this->_table_name)
 			->row_array();
+	}
+
+	public function get_all_by_room_id($room_id)
+	{
+		return $this->db->where('room_id', $room_id)
+			->where('deleted_at', null)
+			->get($this->_table_name)
+			->result_array();
 	}
 }
 

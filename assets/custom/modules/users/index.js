@@ -95,7 +95,6 @@ $(function() {
 						});
 					},
 					error: function (result) {
-						console.log(result);
 						Swal.fire({
 							title: 'Failed!',
 							text: 'Error has been occurred, Please try again later.',

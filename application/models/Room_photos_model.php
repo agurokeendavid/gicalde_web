@@ -20,6 +20,14 @@ class Room_photos_model extends CI_Model
 			->row_array();
 	}
 
+	public function get_by_photo_file_name($photo_file_name)
+	{
+		return $this->db->where('photo_file_name', $photo_file_name)
+			->where('deleted_at', null)
+			->get($this->_table_name)
+			->row_array();
+	}
+
 	public function update_by_room_id_and_photo_key($data, $room_id, $photo_key)
 	{
 		$this->db->where('room_id', $room_id)
@@ -56,6 +64,23 @@ class Room_photos_model extends CI_Model
 			->update($this->_table_name, $data);
 
 		return $id;
+	}
+
+	public function delete_by_room_id($data, $room_id)
+	{
+		$this->db->where('room_id', $room_id)
+			->update($this->_table_name, $data);
+
+		return $room_id;
+	}
+
+	public function delete_by_room_id_and_photo_key($data, $room_id, $photo_key)
+	{
+		$this->db->where('room_id', $room_id)
+			->where('photo_key', $photo_key)
+			->update($this->_table_name, $data);
+
+		return $room_id;
 	}
 
 	public function update($data, $id)

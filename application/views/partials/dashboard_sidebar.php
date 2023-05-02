@@ -16,13 +16,19 @@
 						</p>
 					</div>
 				</div>
-				<p class="sidebar-menu-title">Dash menu</p>
+				<p class="sidebar-menu-title">Menu</p>
 			</li>
 			<?php if ($this->session->userdata('user')['role_id'] == ROLE_ADMINISTRATOR || $this->session->userdata('user')['role_id'] == ROLE_STAFF) : ?>
 				<li class="nav-item <?= (strtolower($page_data['section']) == 'main') ? 'active' : null; ?>">
 					<a class="nav-link" href="<?= base_url() ?>dashboard/admin_main">
 						<i class="typcn typcn-device-desktop menu-icon"></i>
 						<span class="menu-title">Dashboard</span>
+					</a>
+				</li>
+				<li class="nav-item <?= (strtolower($page_data['module']) == 'galleries') ? 'active' : null; ?>">
+					<a class="nav-link" href="<?= base_url() ?>galleries">
+						<i class="typcn typcn-camera menu-icon"></i>
+						<span class="menu-title">Galleries</span>
 					</a>
 				</li>
 				<li class="nav-item <?= (strtolower($page_data['section']) == 'pending reservations' || strtolower($page_data['section']) == 'approved reservations' || strtolower($page_data['section']) == 'completed reservations' || strtolower($page_data['section']) == 'cancelled reservations') ? 'active' : null; ?>">

@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="<?= site_url('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') ?>">
 <link rel="stylesheet" href="<?= site_url('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') ?>">
 <link rel="stylesheet" href="<?= site_url('assets/plugins/buttons/buttons.dataTables.min.css') ?>">
+<link rel="stylesheet" href="<?= site_url('assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css') ?>">
 <!-- End plugin css for this page -->
 <!-- inject:css -->
 <link rel="stylesheet" href="<?= site_url('assets/temps/dashboard/css/vertical-layout-light/style.css')?>">

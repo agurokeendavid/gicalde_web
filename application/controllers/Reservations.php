@@ -7,9 +7,9 @@ class Reservations extends CI_Controller
 	{
 		parent::__construct();
 
-		if (!$this->session->userdata('user')) {
-			redirect('auth/login');
-		}
+//		if (!$this->session->userdata('user')) {
+//			redirect('auth/login');
+//		}
 
 		$this->load->model(array(
 			'Reservations_model' => 'M_reservations'
@@ -45,6 +45,53 @@ class Reservations extends CI_Controller
 		$this->load->view('layouts/dashboard_head', $data);
 		$this->load->view('modules/reservations/index', $data);
 		$this->load->view('layouts/dashboard_foot', $data);
+	}
+
+	public function get_all_by_id_and_reservation_type()
+	{
+		$id = $_GET['id'];
+		$reservation_type = $_GET["reservation_type"];
+		$events = array();
+		date_default_timezone_set("Asia/Manila");
+		if ($reservation_type == 'room') {
+			$room_reservations = $this->M_reservations->get_all_room_reservations_by_room_id($id);
+			foreach ($room_reservations as $rr) {
+				$events[] = array(
+					'id' => $rr['id'],
+					'title' => 'Booked',
+					'start' => $rr['check_in_date'],
+					'end' => $rr['check_out_date']
+				);
+			}
+		} else if ($reservation_type == 'cottage') {
+			$cottage_reservations = $this->M_reservations->get_all_cottage_reservations_by_cottage_id($id);
+			foreach ($cottage_reservations as $cr) {
+				$events[] = array(
+					'id' => $cr['id'],
+					'title' => 'Booked',
+					'start' => $cr['check_in_date'],
+					'end' => $cr['check_in_date']
+				);
+			}
+		}
+		exit(json_encode($events));
+	}
+
+	public function get_all_by_category($category)
+	{
+		if ($category == 'room') {
+			$reservations = $this->M_reservations->get_all_room_reservations();
+			exit(json_encode($reservations));
+		}
+
+		$reservations = $this->M_reservations->get_all_cottage_reservations();
+		exit(json_encode($reservations));
+	}
+
+	public function get_all()
+	{
+		$reservations = $this->M_reservations->get_all();
+		exit(json_encode($reservations));
 	}
 
 	public function get($id = null)

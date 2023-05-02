@@ -107,3 +107,15 @@ if (!function_exists('count_all')) {
 			->num_rows();
 	}
 }
+
+
+if (!function_exists('get_all_reservations_by_room_id')) {
+	function get_all_reservations_by_room_id($room_id)
+	{
+		$ci = &get_instance();
+		$ci->load->model('Reservations_model', 'M_reservations');
+		$data = $ci->M_reservations->get_all_by_room_id($room_id);
+
+		return $data;
+	}
+}
